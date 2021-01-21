@@ -1,0 +1,15 @@
+[Unit]
+Description=MastodonBot
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+Environment=TOKEN=token
+ExecStart=/usr/bin/python3 /root/MastodonBot/mastodon_bot.py
+
+[Install]
+WantedBy=multi-user.target
