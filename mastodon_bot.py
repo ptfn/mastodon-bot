@@ -27,11 +27,11 @@ def run_func():
     r = requests.post(url, headers = headers, json = body, timeout = 10)
 
 
-schedule.every().day.at("10:00").do(print_coin)
-schedule.every().day.at("13:00").do(print_coin)
-schedule.every().day.at("16:00").do(print_coin)
-schedule.every().day.at("19:00").do(print_coin)
-schedule.every().day.at("22:00").do(print_coin)
+schedule.every().day.at("10:00").do(run_func)
+schedule.every().day.at("13:00").do(run_func)
+schedule.every().day.at("16:00").do(run_func)
+schedule.every().day.at("19:00").do(run_func)
+schedule.every().day.at("22:00").do(run_func)
 
 
 while True:
