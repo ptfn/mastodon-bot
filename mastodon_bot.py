@@ -3,7 +3,7 @@ import schedule
 import os
 import time
 
-token = os.getenv('TOKEN')
+token = "d_4CQTTPHBiMpEi_rNCWLDmz4cwNAd0jSVXw5BfOZXI" # os.getenv('TOKEN')
 coins = ['btc', 'eth', 'xmr', 'ltc', 'etc', 'dot', 'grin']
 url = "https://botsin.space/api/v1/statuses"
 
@@ -18,20 +18,18 @@ def price_coin(arr):
         string = string + string_coin.upper() + ': ' + price + '$' + '\n'
     return string
 
-price_coin = price_coin(coins)
-headers = {"Authorization": "Bearer " + token}
-body = {"status": price_coin }
 
-
-def run_func():
+def run_func(price_coin):
+    headers = {"Authorization": "Bearer " + token}
+    body = {"status": price_coin(coins) }
     r = requests.post(url, headers = headers, json = body, timeout = 10)
 
 
-schedule.every().day.at("10:00").do(run_func)
-schedule.every().day.at("13:00").do(run_func)
-schedule.every().day.at("16:00").do(run_func)
-schedule.every().day.at("19:00").do(run_func)
-schedule.every().day.at("22:00").do(run_func)
+schedule.every().day.at("10:00").do(run_func, price_coin)
+schedule.every().day.at("13:00").do(run_func, price_coin)
+schedule.every().day.at("16:00").do(run_func, price_coin)
+schedule.every().day.at("19:00").do(run_func, price_coin)
+schedule.every().day.at("22:00").do(run_func, price_coin)
 
 
 while True:
