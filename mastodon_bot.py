@@ -8,7 +8,7 @@ coins = ['btc', 'eth', 'xmr', 'ltc', 'etc', 'dot','grin', 'ksm']
 url = "https://botsin.space/api/v1/statuses"
 
 
-def price(arr):
+def price_coin(arr):
     string = ''
     for i in range(len(arr)):
         try:
