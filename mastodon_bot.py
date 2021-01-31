@@ -4,17 +4,17 @@ import os
 import time
 
 token = os.getenv('TOKEN')
-coins = ['btc', 'eth', 'xmr', 'ltc', 'etc', 'dot','grin']
+coins = ['btc', 'eth', 'xmr', 'ltc', 'etc', 'dot','grin', 'ksm']
 url = "https://botsin.space/api/v1/statuses"
 
 
-def price_coin(arr):
-    r = requests.get('https://www.bw.com/exchange/config/controller/website/pricecontroller/getassistprice')
-    data = r.json()
+def price(arr):
     string = ''
     for i in range(len(arr)):
         try:
-            price = data['datas']['usd'][arr[i]]
+            r = requests.get('https://api.bitfinex.com/v1/pubticker/'+ arr[i] +'usd')
+            data = r.json()
+            price = data['ask']
             string_coin = arr[i]
             string = string + string_coin.upper() + ': ' + price + '$' + '\n'
         except:
