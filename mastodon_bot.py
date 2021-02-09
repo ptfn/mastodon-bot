@@ -28,14 +28,7 @@ def run_func(price_coin):
     r = requests.post(url, headers = headers, json = body, timeout = 10)
 
 
-schedule.every().day.at("00:00").do(run_func, price_coin)
-schedule.every().day.at("03:00").do(run_func, price_coin)
-schedule.every().day.at("06:00").do(run_func, price_coin)
-schedule.every().day.at("09:00").do(run_func, price_coin)
-schedule.every().day.at("12:00").do(run_func, price_coin)
-schedule.every().day.at("15:00").do(run_func, price_coin)
-schedule.every().day.at("18:00").do(run_func, price_coin)
-schedule.every().day.at("21:00").do(run_func, price_coin)
+schedule.every().hour.do(run_func, price_coin)
 
 
 while True:
