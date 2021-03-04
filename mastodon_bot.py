@@ -34,7 +34,7 @@ def run_func(price_coin):
     r = requests.post(url, headers = headers, json = body, timeout = 10)
 
 
-schedule.every(5).seconds.do(run_func, price_coin)
+schedule.every().hours.do(run_func, price_coin)
 
 
 while True:
