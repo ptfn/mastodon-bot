@@ -20,7 +20,7 @@ def price_coin(arr):
         price = data['ask']
         coin = arr[i]
         if last_price[coin] == 0:
-            string = string + coin.upper() + ': ' + price + '$' + '\n'
+            string = string + coin.upper() + ': ' + '$' + price + '\n'
         else:
             per = persent_price(float(last_price[coin]), float(price))
             string = string + coin.upper() + ': ' + '$' + price + ' ({}%)'.format(per) + '\n'
