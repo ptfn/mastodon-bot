@@ -4,9 +4,9 @@ import os
 import time
 
 token = os.getenv('TOKEN')
-coins = ['btc', 'eth', 'xmr', 'dot', 'ksm']
+coins = ['btc', 'eth', 'ltc', 'xmr', 'uni', 'dot', 'ksm']
 url = "https://botsin.space/api/v1/statuses"
-last_price = {'btc' : 0, 'eth' : 0, 'xmr' : 0, 'dot' : 0, 'ksm' : 0}
+last_price = {'btc' : 0, 'eth' : 0, 'ltc' : 0, 'xmr' : 0, 'uni' : 0, 'dot' : 0, 'ksm' : 0}
 
 
 def persent_price(last, new):
