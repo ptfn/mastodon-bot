@@ -15,8 +15,4 @@ status:
 
 .PHONY: stop
 stop:
-<<<<<<< HEAD
 	systemctl stop mastodon_bot.service
-=======
-	systemctl stop mastodon_bot.service
->>>>>>> ff7042f3edf66a38afca981d4cf149221074e083
