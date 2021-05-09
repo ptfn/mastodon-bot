@@ -8,3 +8,11 @@ install:
 restart:
 	systemctl stop mastodon_bot.service
 	systemctl start mastodon_bot.service
+
+.PHONY: status
+status:
+	systemctl status mastodon_bot.service
+
+.PHONY: stop
+status:
+	systemctl stop mastodon_bot.service
