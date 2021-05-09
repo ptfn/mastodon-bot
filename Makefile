@@ -14,5 +14,5 @@ status:
 	systemctl status mastodon_bot.service
 
 .PHONY: stop
-status:
+stop:
 	systemctl stop mastodon_bot.service
