@@ -12,6 +12,7 @@ last_price = {'btc' : 0, 'eth' : 0, 'ltc' : 0, 'xmr' : 0, 'uni' : 0, 'dot' : 0, 
 def persent_price(last, new):
     return round((new - last) / last * 100, 2)
 
+
 def price_coin(arr):
     string = ''
     for i in range(len(arr)):
@@ -38,5 +39,9 @@ schedule.every().hours.do(run_func, price_coin)
 
 
 while True:
-    schedule.run_pending()
-    time.sleep(1)
+    try:
+        schedule.run_pending()
+    except:
+        print("Error request!")
+    finally:
+        time.sleep(1)
