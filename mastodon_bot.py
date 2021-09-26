@@ -4,8 +4,8 @@ import os
 import time
 
 token = os.getenv('TOKEN')
-coins = ['btc', 'eth', 'ltc', 'xmr', 'uni', 'dot', 'ksm']
 url = "https://botsin.space/api/v1/statuses"
+coins = ['btc', 'eth', 'ltc', 'xmr', 'uni', 'dot', 'ksm']
 last_price = {'btc' : 0, 'eth' : 0, 'ltc' : 0, 'xmr' : 0, 'uni' : 0, 'dot' : 0, 'ksm' : 0}
 
 
@@ -29,18 +29,21 @@ def price_coin(arr):
     return string
 
 
-def run_func(price_coin):
+def main(price_coin):
     headers = {"Authorization": "Bearer " + token}
     body = {"status": price_coin(coins) }
     r = requests.post(url, headers = headers, json = body, timeout = 30)
 
 
-schedule.every().hours.do(run_func, price_coin)
+def run_func():
+    schedule.every().hours.do(main, price_coin)
 
+    while True:
+        try:
+            schedule.run_pending()
+        except:
+            print("Error!")
+        finally:
+            time.sleep(1)
 
-while True:
-    try:
-        schedule.run_pending()
-    except:
-        print("Error!")
-        time.sleep(10)
+run_func()
