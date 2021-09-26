@@ -32,7 +32,7 @@ def price_coin(arr):
 def run_func(price_coin):
     headers = {"Authorization": "Bearer " + token}
     body = {"status": price_coin(coins) }
-    r = requests.post(url, headers = headers, json = body, timeout = 10)
+    r = requests.post(url, headers = headers, json = body, timeout = 30)
 
 
 schedule.every().hours.do(run_func, price_coin)
@@ -42,6 +42,5 @@ while True:
     try:
         schedule.run_pending()
     except:
-        print("Error request!")
-    finally:
-        time.sleep(1)
+        print("Error!")
+        time.sleep(10)
