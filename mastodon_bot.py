@@ -29,21 +29,17 @@ def price_coin(arr):
     return string
 
 
-def main(price_coin):
+def run_func(price_coin):
     headers = {"Authorization": "Bearer " + token}
     body = {"status": price_coin(coins) }
     r = requests.post(url, headers = headers, json = body, timeout = 30)
 
 
-def run_func():
-    schedule.every().hours.do(main, price_coin)
-
+def main():
+    schedule.every().hours.do(run_func, price_coin)
     while True:
-        try:
             schedule.run_pending()
-        except:
-            print("Error!")
-        finally:
             time.sleep(1)
 
-run_func()
+if __name__ == "__main__":
+    main()
