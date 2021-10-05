@@ -38,8 +38,8 @@ def run_func(price_coin):
 def main():
     schedule.every().hours.do(run_func, price_coin)
     while True:
-            schedule.run_pending()
-            time.sleep(1)
+        schedule.run_pending()
+        time.sleep(1)
 
 if __name__ == "__main__":
     main()
