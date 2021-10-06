@@ -3,7 +3,7 @@ import schedule
 import os
 import time
 
-token = os.getenv('TOKEN')
+token = "jPropEfy21SbhvPSVMzOFQe7SoE18KYWQ4rzfEb6c9Y"#os.getenv('TOKEN')
 url = "https://botsin.space/api/v1/statuses"
 coins = ['btc', 'eth', 'ltc', 'xmr', 'uni', 'dot', 'ksm']
 last_price = {'btc' : 0, 'eth' : 0, 'ltc' : 0, 'xmr' : 0, 'uni' : 0, 'dot' : 0, 'ksm' : 0}
@@ -32,7 +32,7 @@ def price_coin(arr):
 def run_func(price_coin):
     headers = {"Authorization": "Bearer " + token}
     body = {"status": price_coin(coins) }
-    r = requests.post(url, headers = headers, json = body, timeout = 30)
+    r = requests.post(url, headers = headers, json = body, timeout = 60)
 
 
 def main():
@@ -41,11 +41,11 @@ def main():
         try:
             schedule.run_pending()
         except:
-            print("Error!")
+            print("--Request Error!--")
         else:
-            print("Ok!")
+            print("--Request Ok!--")
         finally:
-            time.sleep(1)
+            time.sleep(10)
 
 if __name__ == "__main__":
     main()
