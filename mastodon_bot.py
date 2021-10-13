@@ -37,15 +37,16 @@ def request(price_coin):
 
 def main():
     schedule.every().hours.do(request, price_coin)
-    
+
     while True:
         try:
             schedule.run_pending()
         except:
             print("--Request Error!--")
-            time.sleep(10)
         else:
             print("--Request Ok!--")
+        finally:
+            time.sleep(15)
 
 if __name__ == "__main__":
     main()
