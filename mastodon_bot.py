@@ -34,21 +34,18 @@ def request(price_coin):
     body = {"status": price_coin(coins) }
     r = requests.post(url, headers = headers, json = body, timeout = 60)
 
-def run_func():
-    schedule.every().hours.do(request, price_coin)
-
-    while True:
-        schedule.run_pending()
-        time.sleep(1)
 
 def main():
-    try:
-        run_func()
-    except:
-        print("--Request Error!--")
-        time.sleep(10)
-    else:
-        print("--Request Ok!--")
+    schedule.every().hours.do(request, price_coin)
+    
+    while True:
+        try:
+            schedule.run_pending()
+        except:
+            print("--Request Error!--")
+            time.sleep(10)
+        else:
+            print("--Request Ok!--")
 
 if __name__ == "__main__":
     main()
