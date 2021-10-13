@@ -6,8 +6,7 @@ install:
 
 .PHONY: restart
 restart:
-	systemctl stop mastodon_bot.service
-	systemctl start mastodon_bot.service
+	systemctl restart mastodon_bot.service
 
 .PHONY: status
 status:
