@@ -18,4 +18,4 @@ stop:
 
 .PHONY: start
 start:
-        systemctl start mastodon_bot.service
+	systemctl start mastodon_bot.service
