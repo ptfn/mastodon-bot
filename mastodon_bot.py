@@ -1,7 +1,7 @@
-import requests
-import schedule
 import os
 import time
+import requests
+import schedule
 
 token = os.getenv('TOKEN')
 url = "https://botsin.space/api/v1/statuses"
