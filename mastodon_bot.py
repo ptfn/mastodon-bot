@@ -15,17 +15,21 @@ def persent_price(last, new):
 
 def price_coin(arr):
     string = ''
+    
     for i in range(len(arr)):
         r = requests.get('https://api.bitfinex.com/v1/pubticker/'+ arr[i] +'usd')
         data = r.json()
         price = data['ask']
         coin = arr[i]
+        
         if last_price[coin] == 0:
             string = string + coin.upper() + ': ' + '$' + price + '\n'
+        
         else:
             per = persent_price(float(last_price[coin]), float(price))
             string = string + coin.upper() + ': ' + '$' + price + ' ({}%)'.format(per) + '\n'
         last_price[coin] = price
+    
     return string
 
 
@@ -41,12 +45,16 @@ def main():
     while True:
         try:
             schedule.run_pending()
+        
         except:
             print("--Request Error!--")
+        
         else:
             print("--Request Ok!--")
+        
         finally:
             time.sleep(15)
+
 
 if __name__ == "__main__":
     main()
