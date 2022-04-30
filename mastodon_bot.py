@@ -3,6 +3,7 @@ import time
 import requests
 import schedule
 
+
 token = os.getenv('TOKEN')
 url = "https://botsin.space/api/v1/statuses"
 coins = ['btc', 'eth', 'ltc', 'xmr', 'uni', 'dot', 'ksm', 'ada', 'xrp']
